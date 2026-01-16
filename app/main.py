@@ -1,4 +1,5 @@
 import os
+import uvicorn
 from typing import List
 
 from dotenv import load_dotenv
@@ -96,3 +97,10 @@ def create_news(request: Request, news_data: NewsCreate):
     )
 
     return News(**response.data[0])
+
+if __name__ == "__main__":
+    uvicorn.run(
+        "app.main:app",
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 8000))
+    )
