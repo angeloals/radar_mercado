@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Painel Admin · Radar Mercado</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-100 min-h-screen">
+    <!-- Top bar -->
+    <header class="bg-white shadow">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <h1 class="text-xl font-semibold text-gray-800">
+          ⚙️ Painel do Administrador
+        </h1>
+        <a
+          href="/"
+          class="text-sm text-gray-600 hover:text-gray-900"
+        >
+          Voltar para o site
+        </a>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="max-w-7xl mx-auto px-6 py-8">
+      <!-- Actions -->
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-lg font-medium text-gray-800">
+          Gerenciar notícias
+        </h2>
+        <a
+          href="/admin/news/new"
+          class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+        >
+          + Nova notícia
+        </a>
+      </div>
+
+      <!-- Table -->
+      <div class="bg-white shadow rounded overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-gray-50 text-gray-600 uppercase text-xs">
+            <tr>
+              <th class="px-4 py-3 text-left">Título</th>
+              <th class="px-4 py-3 text-left">Status</th>
+              <th class="px-4 py-3 text-left">Publicado em</th>
+              <th class="px-4 py-3 text-right">Ações</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y">
+            {% for news in news %}
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-3 font-medium text-gray-800">
+                {{ news.title }}
+              </td>
+              <td class="px-4 py-3">
+                {% if news.status == "published" %}
+                  <span class="text-green-600 font-medium">Publicado</span>
+                {% else %}
+                  <span class="text-yellow-600 font-medium">Rascunho</span>
+                {% endif %}
+              </td>
+              <td class="px-4 py-3 text-gray-600">
+                {{ news.published_at_fmt or "-" }}
+              </td>
+              <td class="px-4 py-3 text-right space-x-3">
+                <a
+                  href="/admin/news/{{ news.id }}/edit"
+                  class="text-blue-600 hover:underline"
+                >
+                  Editar
+                </a>
+                <a
+                  href="/admin/news/{{ news.id }}/delete"
+                  class="text-red-600 hover:underline"
+                  onclick="return confirm('Deseja excluir esta notícia?')"
+                >
+                  Excluir
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        {% if not news %}
+        <div class="p-6 text-center text-gray-500">
+          Nenhuma notícia cadastrada.
+        </div>
+        {% endif %}
+      </div>
+    </main>
+  </body>
+</html>

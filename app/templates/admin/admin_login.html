@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login Admin · Radar Mercado</title>
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="min-h-screen flex items-center justify-center bg-gray-50 text-gray-900"
+    style="
+      background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+      background-size: 16px 16px;
+    "
+  >
+    <div class="bg-white border rounded-lg w-full max-w-md p-8">
+      <div class="text-center mb-6">
+        <h1 class="text-2xl font-semibold text-gray-800">Acessar conta</h1>
+      </div>
+
+      {% if request.query_params.get("error") %}
+        <div class="bg-red-100 text-red-700 text-sm px-4 py-2 rounded mb-4">
+          Email ou senha inválidos.
+        </div>
+      {% endif %}
+
+      <form
+        method="post"
+        action="/admin/login"
+        class="space-y-4"
+        autocomplete="on"
+      >
+        <div>
+          <label
+            for="email"
+            class="block text-sm/6 font-medium text-gray-900"
+            >Email address</label
+          >
+          <div class="mt-2">
+            <input
+              id="email"
+              type="email"
+              name="email"
+              required
+              autocomplete="email"
+              class="border block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+            />
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between">
+            <label
+              for="password"
+              class="block text-sm/6 font-medium text-gray-900"
+              >Password</label
+            >
+            <div class="text-sm">
+              <a
+                href="#"
+                class="font-semibold text-indigo-600 hover:text-indigo-500"
+                >Forgot password?</a
+              >
+            </div>
+          </div>
+          <div class="mt-2">
+            <input
+              id="password"
+              type="password"
+              name="password"
+              required
+              autocomplete="current-password"
+              class="border block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+            />
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition font-medium"
+        >
+          Acessar
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

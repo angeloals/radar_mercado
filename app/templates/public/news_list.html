@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for n in news %}
+    <article class="bg-white mb-8 p-4 border border-[#fa7b24] rounded-xl">
+        <h2 class="text-xl font-semibold">
+            <a
+                href="/news/{{ n.slug }}"
+                class="text-black hover:underline"
+            >
+                {{ n.title }}
+            </a>
+        </h2>
+        <p class="text-sm text-gray-600">
+            {{ n.published_at_fmt }}
+        </p>
+        <p class="mt-2">
+            {{ n.summary }}
+        </p>
+        <div class="mt-2 space-x-2">
+            {% for tag in n.tags %}
+                <span class="text-xs bg-gray-200 px-2 py-1 rounded">
+                    {{ tag }}
+                </span>
+            {% endfor %}
+        </div>
+    </article>
+{% endfor %}
+
+{% endblock %}

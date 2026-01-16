@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <button
+    class="bg-[#fa7b24] hover:bg-[#cd5c0f] focus:outline-2 focus:outline-offset-2 focus:outline-[#ff7415] rounded-md"
+  >
+    <a href="/" class="p-2">Voltar</a>
+  </button>
+
+  <article class="bg-white mt-8 p-4 border-b rounded-xl">
+    <h1 class="text-2xl font-bold mt-4">
+      {{ news.title }}
+    </h1>
+    <p class="text-sm text-gray-600 mt-1">
+      {{ news.published_at_fmt }}
+    </p>
+    <div class="mt-4 prose max-w-none">
+      {{ news.content }}
+    </div>
+  </article>
+{% endblock %}

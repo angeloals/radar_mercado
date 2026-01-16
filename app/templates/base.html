@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Radar Estratégico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="min-h-screen px-8 py-12 bg-gray-50 text-gray-900"
+    style="
+      background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+      background-size: 16px 16px;
+    "
+  >
+    <header class="max-w-4xl mx-auto p-6">
+      <div class="w-full bg-[#004e4c] text-white px-8 py-6 rounded-xl">
+        <div class="flex items-center justify-between items-center">
+          <h1 class="text-3xl font-bold tracking-wide">
+            RADAR DE <span class="text-[#bbd034]">MERCADO</span>
+          </h1>
+          <div class="flex gap-4">
+            <img 
+            src="/static/images/Unimed-Sul-Capixaba.png" 
+            alt="Unimed Sul Capixaba" 
+            class="h-14 w-auto"
+            />
+            <img 
+            src="/static/images/Somos-Coop.png" 
+            alt="Somos Coop" 
+            class="h-14 w-auto"
+            />
+          </div>
+        </div>
+      </div>
+      <a
+        href="/admin/login"
+        class="fixed top-6 right-6 bg-white/90 p-2 rounded-full shadow hover:bg-gray-100 transition"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 text-gray-700"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M11.983 5.072c-.26.02-.518.05-.776.092l-.261-.65a2 2 0 00-2.594-1.126l-.61.24a2 2 0 00-1.13 2.594l.26.65a6.978 6.978 0 00-.676.676l-.65-.26a2 2 0 00-2.594 1.126l-.24.61a2 2 0 001.126 2.594l.65.26c-.04.258-.07.516-.09.776l-.65.261a2 2 0 00-1.126 2.594l.24.61a2 2 0 002.594 1.126l.65-.26c.206.236.433.463.676.676l-.26.65a2 2 0 001.126 2.594l.61.24a2 2 0 002.594-1.126l.261-.65c.258.04.516.07.776.09l.26.65a2 2 0 002.594 1.126l.61-.24a2 2 0 001.126-2.594l-.26-.65a6.978 6.978 0 00.676-.676l.65.26a2 2 0 002.594-1.126l.24-.61a2 2 0 00-1.126-2.594l-.65-.26c.04-.258.07-.516.09-.776l.65-.261a2 2 0 001.126-2.594l-.24-.61a2 2 0 00-2.594-1.126l-.65.26a6.978 6.978 0 00-.676-.676l.26-.65a2 2 0 00-1.126-2.594l-.61-.24a2 2 0 00-2.594 1.126l-.26.65z"
+          />
+        </svg>
+      </a>
+    </header>
+    <main class="max-w-4xl mx-auto py-2 px-6">
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>
